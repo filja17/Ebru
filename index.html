@@ -3,38 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EBRU — Sztuka w Ruchu</title>
-  <meta name="description" content="Luksusowe chusty tworzone w technice ebru. Każda jest jedyna. Każda żyje.">
+  <title>EBRU — Jedwab w Ruchu</title>
+  <meta name="description"
+        content="Luksusowe chusty jedwabne tworzone w technice ebru.
+                 Każda jedyna. Każda żyje.">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap"
+        rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/home.css">
+
+  <style>
+    /* Nadpisz domyślny jasny background z style.css */
+    body { background: #0e0c0a !important; }
+    .nav { background: transparent !important; }
+    .nav.scrolled {
+      background: rgba(14,12,10,0.92) !important;
+      border-bottom: 1px solid rgba(201,169,110,0.1) !important;
+    }
+    .nav__logo { color: rgba(245,240,232,0.85) !important; }
+    .nav__logo span { color: rgba(201,169,110,0.8) !important; }
+    .nav__links a { color: rgba(245,240,232,0.6) !important; }
+    .nav__links a:hover { color: rgba(201,169,110,0.9) !important; }
+    .nav__links a::after { background: rgba(201,169,110,0.7) !important; }
+    .nav__cart { color: rgba(245,240,232,0.6) !important; }
+    .nav__cart:hover { color: rgba(201,169,110,0.9) !important; }
+    .nav__hamburger span { background: rgba(245,240,232,0.7) !important; }
+    .nav__mobile { background: #0e0c0a !important; }
+    .nav__mobile a { color: rgba(245,240,232,0.7) !important; }
+  </style>
 </head>
 <body>
 
   <!-- PAGE TRANSITION -->
   <div class="page-transition" id="pageTransition"></div>
 
-  <!-- ============ NAVIGATION ============ -->
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot"    id="cursorDot"></div>
+  <div class="cursor-circle" id="cursorCircle"></div>
+
+  <!-- ======== NAV ======== -->
   <nav class="nav" id="mainNav">
     <a href="index.html" class="nav__logo">ebru<span>.</span></a>
-
     <ul class="nav__links">
       <li><a href="index.html">Główna</a></li>
       <li><a href="products.html">Kolekcja</a></li>
       <li><a href="about.html">O Nas</a></li>
     </ul>
-
     <div class="nav__cart" id="cartToggle">
       <span>Koszyk</span>
       <span class="cart-count" id="cartCount">0</span>
     </div>
-
-    <!-- Hamburger mobile -->
     <div class="nav__hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
@@ -42,365 +64,223 @@
 
   <!-- Mobile menu -->
   <div class="nav__mobile" id="mobileMenu">
-    <a href="index.html" onclick="closeMobile()">Główna</a>
+    <a href="index.html"    onclick="closeMobile()">Główna</a>
     <a href="products.html" onclick="closeMobile()">Kolekcja</a>
-    <a href="about.html" onclick="closeMobile()">O Nas</a>
-    <a href="#" onclick="closeMobile(); openCart()">Koszyk</a>
+    <a href="about.html"    onclick="closeMobile()">O Nas</a>
+    <a href="#" onclick="closeMobile();openCart()">Koszyk</a>
   </div>
 
-  <!-- ============ CART DRAWER ============ -->
+  <!-- ======== CART DRAWER ======== -->
   <div class="cart-overlay" id="cartOverlay">
-    <div class="cart-drawer" id="cartDrawer">
-      <div class="cart-drawer__header">
-        <h3>Twój Koszyk</h3>
-        <button class="cart-close" id="cartClose">✕</button>
+    <div class="cart-drawer" id="cartDrawer"
+         style="background:#141210">
+      <div class="cart-drawer__header"
+           style="border-bottom:1px solid rgba(201,169,110,0.15)">
+        <h3 style="color:rgba(245,240,232,0.8);
+                   font-family:'Cormorant Garamond',serif;
+                   font-weight:300">
+          Twój Koszyk
+        </h3>
+        <button class="cart-close" id="cartClose"
+                style="color:rgba(245,240,232,0.4)">✕</button>
       </div>
       <div class="cart-items" id="cartItems">
         <div class="cart-empty" id="cartEmpty">
-          <span style="font-size:2rem;opacity:0.3;">◇</span>
-          <p>Twój koszyk jest pusty.<br>Odkryj naszą kolekcję.</p>
-          <a href="products.html" class="btn btn--outline" style="margin-top:1rem">
+          <span style="font-size:2rem;opacity:0.2;color:#c9a96e">◇</span>
+          <p style="color:rgba(245,240,232,0.3);font-size:0.85rem;
+                    text-align:center;line-height:1.8">
+            Twój koszyk jest pusty.<br>Odkryj kolekcję.
+          </p>
+          <a href="products.html"
+             style="margin-top:1.5rem;
+                    font-family:'Jost',sans-serif;
+                    font-size:0.7rem;
+                    letter-spacing:0.2em;
+                    text-transform:uppercase;
+                    color:rgba(201,169,110,0.6);
+                    border-bottom:1px solid rgba(201,169,110,0.3);
+                    padding-bottom:3px;
+                    text-decoration:none">
             Przeglądaj
           </a>
         </div>
       </div>
-      <div class="cart-drawer__footer" id="cartFooter" style="display:none">
-        <div class="cart-total">
+      <div class="cart-drawer__footer" id="cartFooter"
+           style="display:none;border-top:1px solid rgba(201,169,110,0.1)">
+        <div class="cart-total"
+             style="color:rgba(245,240,232,0.7)">
           <span>Razem</span>
-          <span id="cartTotal">0 PLN</span>
+          <span id="cartTotal"
+                style="color:rgba(201,169,110,0.8)">0 PLN</span>
         </div>
-        <button class="btn btn--dark" style="width:100%;margin-bottom:0.8rem">
+        <button class="btn btn--solid" style="width:100%;
+                background:rgba(201,169,110,0.9);
+                border-color:transparent;
+                margin-bottom:0.8rem">
           Przejdź do Kasy
         </button>
-        <p style="text-align:center;font-size:0.72rem;letter-spacing:0.1em;color:var(--text-muted)">
+        <p style="text-align:center;font-size:0.7rem;
+                  color:rgba(245,240,232,0.2);letter-spacing:0.08em">
           Bezpieczna płatność · Darmowa dostawa od 500 PLN
         </p>
       </div>
     </div>
   </div>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="hero__bg">
+  <!-- ======================================================
+       HERO — LIVING COLLAGE
+       Zdjęcia chust ebru — wzory marmurowe na jedwabiu
+  ======================================================= -->
+  <section class="hero" id="hero">
+    <div class="hero__canvas"></div>
+
+    <!--
+      UWAGA: podmień src na własne zdjęcia chust.
+      Szukaj na: unsplash.com/s/photos/ebru-silk-scarf
+      lub pixabay.com/images/search/ebru/
+      Przykładowe słowa kluczowe:
+      "ebru scarf silk", "marbled silk scarf",
+      "silk scarf painting", "marbling fabric"
+    -->
+
+    <!-- Warstwa 1 — dominujące zdjęcie, chusta rozłożona -->
+    <div class="hero__layer hero__layer--1 parallax-slow"
+         data-parallax="0.04">
       <img
-        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=90"
-        alt="Ebru art – marbled silk"
+        src="https://images.unsplash.com/photo-1594938298603-c8148c4b4357?w=1200&q=90"
+        alt="Jedwabna chusta ebru — wzór marmurowy"
       >
     </div>
 
-    <div class="hero__orbs">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="orb orb-3"></div>
+    <!-- Warstwa 2 — detail wzoru ebru, prawy górny -->
+    <div class="hero__layer hero__layer--2 parallax-med"
+         data-parallax="0.07">
+      <img
+        src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=90"
+        alt="Detal wzoru ebru na jedwabiu"
+      >
     </div>
 
+    <!-- Warstwa 3 — chusta w ruchu, draped -->
+    <div class="hero__layer hero__layer--3 parallax-fast"
+         data-parallax="0.11">
+      <img
+        src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=85"
+        alt="Chusta jedwabna ebru — draped"
+      >
+    </div>
+
+    <!-- Warstwa 4 — pionowa, wzór w zbliżeniu -->
+    <div class="hero__layer hero__layer--4 parallax-slow"
+         data-parallax="0.05">
+      <img
+        src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=700&q=85"
+        alt="Wzór ebru na jedwabiu — zbliżenie"
+      >
+    </div>
+
+    <!-- Warstwa 5 — mała, lewy dół -->
+    <div class="hero__layer hero__layer--5 parallax-med"
+         data-parallax="0.09">
+      <img
+        src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&q=80"
+        alt="Jedwab ebru — szczegół"
+      >
+    </div>
+
+    <!-- Linie dekoracyjne -->
+    <div class="hero__ink-line hero__ink-line--h"></div>
+    <div class="hero__ink-line hero__ink-line--v"></div>
+
+    <!-- Globalna nakładka cieniująca -->
+    <div class="hero__overlay"></div>
+
+    <!-- Tekst -->
     <div class="hero__content">
-      <div class="hero__eyebrow">Sztuka która żyje</div>
+      <div class="hero__eyebrow">
+        <span class="hero__eyebrow-line"></span>
+        <span class="hero__eyebrow-text">Sztuka ebru · Jedwab</span>
+      </div>
+
       <h1 class="hero__title">
-        Każda chusta<br>
-        to <em>osobny</em><br>
-        wszechświat.
+        Wzór który<br>
+        <em>nigdy się</em><br>
+        nie powtórzy.
+        <span class="hero__title-small">
+          Chusty jedwabne · Technika ebru
+        </span>
       </h1>
-      <p class="hero__subtitle">
-        Technika ebru — kolor unoszący się na wodzie,
-        zamrożony w jedwabiu. Nie ma dwóch takich samych.
-        Tylko twoja.
-      </p>
+
       <div class="hero__cta">
-        <a href="products.html" class="btn btn--solid">
+        <a href="products.html" class="hero__btn">
           Odkryj Kolekcję
         </a>
-        <a href="about.html" class="btn--hero-outline">
+        <a href="about.html" class="hero__btn hero__btn--ghost">
           Nasza Historia
         </a>
       </div>
     </div>
 
+    <!-- Scroll -->
     <div class="hero__scroll">
-      <div class="hero__scroll-line"></div>
-      <span>Odkryj</span>
+      <div class="hero__scroll-track">
+        <div class="hero__scroll-thumb"></div>
+      </div>
+      <span class="hero__scroll-label">Odkryj</span>
     </div>
   </section>
 
-  <!-- ============ MANIFESTO ============ -->
-  <div class="manifesto">
-    <div class="manifesto__text-block" data-reveal>
-      <span class="section__label">Manifest</span>
-      <p class="manifesto__quote">
-        Piękno nie jest w doskonałości.
-        Jest w tym jednym, nieuchwytnym ruchu.
-      </p>
-      <p class="manifesto__body">
-        Ebru to jedna z najstarszych sztuk świata. Artysta zanurzony
-        w ciszy, czubek igły ślizga się po wodzie i tworzy wzory
-        niemożliwe do powtórzenia. Gdy tkanina dotknie powierzchni —
-        moment zostaje zatrzymany na zawsze.
-      </p>
-      <p class="manifesto__body">
-        Każda nasza chusta jest oryginalnym dziełem sztuki.
-        Nosi w sobie ten jeden, konkretny oddech artystki.
-      </p>
-      <a href="about.html" class="btn btn--outline">
-        Poznaj Historię
-      </a>
-    </div>
-
-    <div class="manifesto__visual" data-reveal data-reveal-delay="2">
-      <div class="manifesto__img-frame">
-        <img
-          src="https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=900&q=85"
-          alt="Technika ebru na jedwabiu"
-        >
-      </div>
+  <!-- ======== TICKER ======== -->
+  <div class="ticker">
+    <div class="ticker__track" id="tickerTrack">
+      <span class="ticker__item">Jedwab Naturalny</span>
+      <span class="ticker__item">Technika Ebru</span>
+      <span class="ticker__item">Każda Chusta Jedyna</span>
+      <span class="ticker__item">Wzory na Wodzie</span>
+      <span class="ticker__item">Ręcznie Tworzone</span>
+      <span class="ticker__item">Certyfikat Autentyczności</span>
+      <span class="ticker__item">Jedwab Naturalny</span>
+      <span class="ticker__item">Technika Ebru</span>
+      <span class="ticker__item">Każda Chusta Jedyna</span>
+      <span class="ticker__item">Wzory na Wodzie</span>
+      <span class="ticker__item">Ręcznie Tworzone</span>
+      <span class="ticker__item">Certyfikat Autentyczności</span>
     </div>
   </div>
 
-  <!-- ============ FEATURED CAROUSEL ============ -->
-  <section class="featured">
-    <div class="featured__header">
-      <div data-reveal>
-        <span class="section__label">Kolekcja</span>
-        <h2>Wybrane Prace</h2>
-      </div>
-      <a href="products.html" class="btn btn--outline" data-reveal data-reveal-delay="2">
-        Zobacz Wszystkie
-      </a>
-    </div>
-
-    <div class="featured__track-wrapper">
-      <div class="featured__track" id="featuredTrack">
-
-        <div class="featured__slide">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Chusta Azul">
-          <div class="featured__slide-overlay">
-            <div class="featured__slide-info">
-              <h4>Azul Profundo</h4>
-              <p>od 890 PLN</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="featured__slide">
-          <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&q=80" alt="Chusta Terra">
-          <div class="featured__slide-overlay">
-            <div class="featured__slide-info">
-              <h4>Terra Rosa</h4>
-              <p>od 750 PLN</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="featured__slide">
-          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Chusta Noir">
-          <div class="featured__slide-overlay">
-            <div class="featured__slide-info">
-              <h4>Nuit Indigo</h4>
-              <p>od 1 100 PLN</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="featured__slide">
-          <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=600&q=80" alt="Chusta Amber">
-          <div class="featured__slide-overlay">
-            <div class="featured__slide-info">
-              <h4>Ambre Doré</h4>
-              <p>od 980 PLN</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="featured__slide">
-          <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80" alt="Chusta Bloom">
-          <div class="featured__slide-overlay">
-            <div class="featured__slide-info">
-              <h4>First Bloom</h4>
-              <p>od 820 PLN</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PHILOSOPHY STRIP ============ -->
-  <section style="background:var(--ink)">
-    <div class="philosophy">
-      <div class="philosophy__item" data-reveal>
-        <span class="philosophy__icon">◇</span>
-        <h3>
-                  Jedyna w Swoim Rodzaju
-        </h3>
-        <div class="divider divider--center"></div>
-        <p>
-          Żaden wzór nie powtarza się dwa razy.
-          Kupując naszą chustę, stajesz się jedynym
-          właścicielem tego konkretnego dzieła na świecie.
-        </p>
-      </div>
-
-      <div class="philosophy__item" data-reveal data-reveal-delay="2">
-        <span class="philosophy__icon">◈</span>
-        <h3>Czysta Materia</h3>
-        <div class="divider divider--center"></div>
-        <p>
-          Używamy wyłącznie jedwabiu najwyższej klasy
-          i naturalnych pigmentów. Żadnych kompromisów
-          w materiałach — bo sztuka zasługuje
-          na godne medium.
-        </p>
-      </div>
-
-      <div class="philosophy__item" data-reveal data-reveal-delay="4">
-        <span class="philosophy__icon">◉</span>
-        <h3>Żywa Tradycja</h3>
-        <div class="divider divider--center"></div>
-        <p>
-          Ebru to sztuka licząca ponad 500 lat.
-          Przenosimy ją w teraźniejszość —
-          zachowując duszę, nadając nową formę.
-          Nosisz historię.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ EDITORIAL FULLWIDTH ============ -->
-  <section class="editorial" id="editorial">
-    <div class="editorial__bg">
+  <!-- ======== STRIP 1 — chusty w ruchu ======== -->
+  <div class="strip">
+    <div class="strip__track">
+      <!--
+        Tu wrzuć swoje zdjęcia chust:
+        — rozłożone na płasko
+        — zawieszone
+        — w detalach wzoru
+        — proces tworzenia
+      -->
+      <img class="strip__img"
+           src="https://images.unsplash.com/photo-1594938298603-c8148c4b4357?w=560&q=75"
+           alt="Chusta ebru 1">
+      <img class="strip__img"
+           src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=560&q=75"
+           alt="Chusta ebru 2">
+      <img class="strip__img"
+           src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=560&q=75"
+           alt="Chusta ebru 3">
+      <img class="strip__img"
+           src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=560&q=75"
+           alt="Chusta ebru 4">
+      <img class="strip__img"
+           src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=560&q=75"
+           alt="Chusta ebru 5">
+      <img class="strip__img"
+           src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=560&q=75"
+           alt="Chusta ebru 6">
+      <!-- Duplikaty dla pętli -->
+      <img class="strip__img"
+           src="https://images.unsplash.com/photo-1594938298603-c8148c4b4357?w=560&q=75"
+           alt="Chusta ebru 1">
+      <img class="strip__img"
+           src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=560&q=75"
+           alt="Chusta ebru 2">
       <img
-        src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1800&q=85"
-        alt="Editorial ebru scarf"
-      >
-    </div>
-    <div class="editorial__content">
-      <span class="section__label" style="color:var(--gold-light)">Limitowana Edycja</span>
-      <h2 data-reveal>Kolekcja Jesień — Zima 2025</h2>
-      <p data-reveal data-reveal-delay="1">
-        Głębokie indygo, przydymione złoto i cisza o świcie.
-        Dwanaście prac. Każda z historią.
-      </p>
-      <a href="products.html" class="btn btn--outline"
-         style="border-color:rgba(245,240,232,0.5);color:var(--cream)"
-         data-reveal data-reveal-delay="2">
-        Odkryj Edycję
-      </a>
-    </div>
-  </section>
-
-  <!-- ============ INSTAGRAM STRIP ============ -->
-  <section class="section--small" style="text-align:center">
-    <span class="section__label" style="display:block;text-align:center">
-      Śledź Naszą Historię
-    </span>
-    <h2 data-reveal style="margin-bottom:0.5rem">@ebrustudio</h2>
-    <p data-reveal data-reveal-delay="1"
-       style="margin-bottom:3rem;font-style:italic;font-family:var(--font-serif)">
-      Warsztat. Proces. Gotowe dzieło.
-    </p>
-
-    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px" data-reveal>
-      <a href="https://instagram.com" target="_blank" rel="noopener"
-         style="aspect-ratio:1;overflow:hidden;display:block">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=70"
-             alt="Instagram 1" style="width:100%;height:100%;object-fit:cover;
-             transition:transform 0.5s;display:block">
-      </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener"
-         style="aspect-ratio:1;overflow:hidden;display:block">
-        <img src="https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=300&q=70"
-             alt="Instagram 2" style="width:100%;height:100%;object-fit:cover;
-             transition:transform 0.5s;display:block">
-      </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener"
-         style="aspect-ratio:1;overflow:hidden;display:block">
-        <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=300&q=70"
-             alt="Instagram 3" style="width:100%;height:100%;object-fit:cover;
-             transition:transform 0.5s;display:block">
-      </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener"
-         style="aspect-ratio:1;overflow:hidden;display:block">
-        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=300&q=70"
-             alt="Instagram 4" style="width:100%;height:100%;object-fit:cover;
-             transition:transform 0.5s;display:block">
-      </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener"
-         style="aspect-ratio:1;overflow:hidden;display:block">
-        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&q=70"
-             alt="Instagram 5" style="width:100%;height:100%;object-fit:cover;
-             transition:transform 0.5s;display:block">
-      </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener"
-         style="aspect-ratio:1;overflow:hidden;display:block">
-        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=300&q=70"
-             alt="Instagram 6" style="width:100%;height:100%;object-fit:cover;
-             transition:transform 0.5s;display:block">
-      </a>
-    </div>
-  </section>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <div class="footer__brand-name">ebru<span>.</span></div>
-        <p>
-          Luksusowe chusty tworzone w technice ebru.
-          Każda jest jedyna. Każda nosi w sobie
-          moment swojego powstania.
-        </p>
-        <div class="footer__socials" style="margin-top:1.5rem">
-          <a href="https://instagram.com" target="_blank"
-             rel="noopener" class="social-icon" aria-label="Instagram">
-            IG
-          </a>
-          <a href="https://facebook.com" target="_blank"
-             rel="noopener" class="social-icon" aria-label="Facebook">
-            FB
-          </a>
-          <a href="https://pinterest.com" target="_blank"
-             rel="noopener" class="social-icon" aria-label="Pinterest">
-            PT
-          </a>
-          <a href="https://tiktok.com" target="_blank"
-             rel="noopener" class="social-icon" aria-label="TikTok">
-            TK
-          </a>
-        </div>
-      </div>
-
-      <div class="footer__col">
-        <h4>Nawigacja</h4>
-        <ul>
-          <li><a href="index.html">Strona Główna</a></li>
-          <li><a href="products.html">Kolekcja</a></li>
-          <li><a href="about.html">O Nas</a></li>
-          <li><a href="products.html#limitowana">Limitowane Edycje</a></li>
-        </ul>
-      </div>
-
-      <div class="footer__col">
-        <h4>Informacje</h4>
-        <ul>
-          <li><a href="#">Dostawa i Zwroty</a></li>
-          <li><a href="#">Pielęgnacja Jedwabiu</a></li>
-          <li><a href="#">Certyfikat Autentyczności</a></li>
-          <li><a href="#">Kontakt</a></li>
-          <li><a href="#">Polityka Prywatności</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer__bottom">
-      <p>© 2025 Ebru Studio. Wszelkie prawa zastrzeżone.</p>
-      <p style="font-style:italic;font-family:var(--font-serif);
-                color:rgba(245,240,232,0.2);font-size:0.85rem">
-        Każda chusta to osobny wszechświat.
-      </p>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
-</body>
-</html>
