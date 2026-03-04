@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kolekcja — EBRU Studio</title>
+  <meta name="description" content="Oryginalne chusty ebru. Każda jedyna. Każda sygnowana przez artystkę.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+
+  <div class="page-transition" id="pageTransition"></div>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="mainNav">
+    <a href="index.html" class="nav__logo">ebru<span>.</span></a>
+    <ul class="nav__links">
+      <li><a href="index.html">Główna</a></li>
+      <li><a href="products.html">Kolekcja</a></li>
+      <li><a href="about.html">O Nas</a></li>
+    </ul>
+    <div class="nav__cart" id="cartToggle">
+      <span>Koszyk</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </div>
+    <div class="nav__hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="nav__mobile" id="mobileMenu">
+    <a href="index.html" onclick="closeMobile()">Główna</a>
+    <a href="products.html" onclick="closeMobile()">Kolekcja</a>
+    <a href="about.html" onclick="closeMobile()">O Nas</a>
+    <a href="#" onclick="closeMobile(); openCart()">Koszyk</a>
+  </div>
+
+  <!-- CART DRAWER -->
+  <div class="cart-overlay" id="cartOverlay">
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-drawer__header">
+        <h3>Twój Koszyk</h3>
+        <button class="cart-close" id="cartClose">✕</button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <div class="cart-empty" id="cartEmpty">
+          <span style="font-size:2rem;opacity:0.3;">◇</span>
+          <p>Twój koszyk jest pusty.<br>Odkryj naszą kolekcję.</p>
+        </div>
+      </div>
+      <div class="cart-drawer__footer" id="cartFooter" style="display:none">
+        <div class="cart-total">
+          <span>Razem</span>
+          <span id="cartTotal">0 PLN</span>
+        </div>
+        <button class="btn btn--dark" style="width:100%;margin-bottom:0.8rem">
+          Przejdź do Kasy
+        </button>
+        <p style="text-align:center;font-size:0.72rem;letter-spacing:0.1em;
+                  color:var(--text-muted)">
+          Bezpieczna płatność · Darmowa dostawa od 500 PLN
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero__bg">
+      <img
+        src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=85"
+        alt="Kolekcja ebru"
+      >
+    </div>
+    <div class="page-hero__content">
+      <span class="section__label" style="color:var(--gold-light)">
+        Oryginalne Dzieła
+      </span>
+      <h1>Kolekcja</h1>
+      <p>Jedwab. Woda. Pigment. Moment.</p>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="products-filters">
+    <span class="filter-label">Filtruj:</span>
+    <button class="filter-btn active" data-filter="all">Wszystkie</button>
+    <button class="filter-btn" data-filter="kwadrat">Kwadratowe</button>
+    <button class="filter-btn" data-filter="podluzna">Podłużne</button>
+    <button class="filter-btn" data-filter="limitowana">Limitowane</button>
+    <button class="filter-btn" data-filter="dostepna">Dostępne</button>
+  </div>
+
+  <!-- PRODUCTS GRID -->
+  <section class="products-section">
+    <div class="products-grid" id="productsGrid">
+
+      <!-- CARD 1 -->
+      <div class="product-card" data-category="kwadrat limitowana"
+           data-reveal
+           onclick="openModal('azul')">
+        <div class="product-card__visual">
+          <img class="product-card__img"
+               src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+               alt="Azul Profundo">
+          <img class="product-card__img-2"
+               src="https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=600&q=80"
+               alt="Azul Profundo detail">
+          <div class="product-card__badge">Limitowana</div>
+          <div class="product-card__actions">
+            <button class="btn btn--solid"
+                    onclick="event.stopPropagation(); addToCart('Azul Profundo', 890)">
+              Dodaj do Koszyka
+            </button>
+            <button class="btn--hero-outline"
+                    onclick="event.stopPropagation(); openModal('azul')">
+              Szczegóły
+            </button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <div>
+            <div class="product-card__name">Azul Profundo</div>
+            <div class="product-card__variant">Jedwab · 90×90 cm</div>
+          </div>
+          <div class="product-card__price">890 PLN</div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="product-card" data-category="podluzna dostepna"
+           data-reveal data-reveal-delay="1"
+           onclick="openModal('terra')">
+        <div class="product-card__visual">
+          <img class="product-card__img"
+               src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80"
+               alt="Terra Rosa">
+          <img class="product-card__img-2"
+               src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=600&q=80"
+               alt="Terra Rosa detail">
+          <div class="product-card__actions">
+            <button class="btn btn--solid"
+                    onclick="event.stopPropagation(); addToCart('Terra Rosa', 750)">
+              Dodaj do Koszyka
+            </button>
+            <button class="btn--hero-outline"
+                    onclick="event.stopPropagation(); openModal('terra')">
+              Szczegóły
+            </button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <div>
+            <div class="product-card__name">Terra Rosa</div>
+            <div class="product-card__variant">Jedwab · 45×175 cm</div>
+          </div>
+          <div class="product-card__price">750 PLN</div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="product-card" data-category="kwadrat dostepna"
+           data-reveal data-reveal-delay="2"
+           onclick="openModal('nuit')">
+        <div class="product-card__visual">
+          <img class="product-card__img"
+               src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80"
+               alt="Nuit Indigo">
+          <img class="product-card__img-2"
+               src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&q=80"
+               alt="Nuit Indigo detail">
+          <div class="product-card__actions">
+            <button class="btn btn--solid"
+                    onclick="event.stopPropagation(); addToCart('Nuit Indigo', 1100)">
+              Dodaj do Koszyka
+            </button>
+            <button class="btn--hero-outline"
+                    onclick="event.stopPropagation(); openModal('nuit')">
+              Szczegóły
+            </button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <div>
+            <div class="product-card__name">Nuit Indigo</div>
+            <div class="product-card__variant">Jedwab szyfon · 90×90 cm</div>
+          </div>
+          <div class="product-card__price">1 100 PLN</div>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="product-card" data-category="podluzna limitowana"
+           data-reveal
+           onclick="openModal('ambre')">
+        <div class="product-card__visual">
+          <img class="product-card__img"
+               src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=600&q=80"
+               alt="Ambre Doré">
+          <img class="product-card__img-2"
+               src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+               alt="Ambre Doré detail">
+          <div class="product-card__badge">Limitowana</div>
+          <div class="product-card__actions">
+            <button class="btn btn--solid"
+                    onclick="event.stopPropagation(); addToCart('Ambre Doré', 980)">
+              Dodaj do Koszyka
+            </button>
+            <button class="btn--hero-outline"
+                    onclick="event.stopPropagation(); openModal('ambre')">
+              Szczegóły
+            </button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <div>
+            <div class="product-card__name">Ambre Doré</div>
+            <div class="product-card__variant">Jedwab · 45×175 cm</div>
+          </div>
+          <div class="product-card__price">
+            <span class="original">1 200 PLN</span>
+            980 PLN
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="product-card" data-category="kwadrat dostepna"
+           data-reveal data-reveal-delay="1"
+           onclick="openModal('bloom')">
+        <div class="product-card__visual">
+          <img class="product-card__img"
+               src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80"
+               alt="First Bloom">
+          <img class="product-card__img-2"
+               src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80"
+               alt="First Bloom detail">
+          <div class="product-card__actions">
+            <button class="btn btn--solid"
+                    onclick="event.stopPropagation(); addToCart('First Bloom', 820)">
+              Dodaj do Koszyka
+            </button>
+            <button class="btn--hero-outline"
+                    onclick="event.stopPropagation(); openModal('bloom')">
+              Szczegóły
+            </button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <div>
+            <div class="product-card__name">First Bloom</div>
+            <div class="product-card__variant">Jedwab · 90×90 cm</div>
+          </div>
+          <div class="product-card__price">820 PLN</div>
+        </div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="product-card" data-category="podluzna dostepna"
+           data-reveal data-reveal-delay="2"
+           onclick="openModal('cendre')">
+        <div class="product-card__visual">
+          <img class="product-card__img"
+               src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&q=80"
+               alt="Cendre de Soie">
+          <img class="product-card__img-2"
+               src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80"
+               alt="Cendre de Soie detail">
+          <div class="product-card__actions">
+            <button class="btn btn--solid"
+                    onclick="event.stopPropagation(); addToCart('Cendre de Soie', 860)">
+              Dodaj do Koszyka
+            </button>
+            <button class="btn--hero-outline"
+                    onclick="event.stopPropagation(); openModal('cendre')">
+              Szczegóły
+            </button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <div>
+            <div class="product-card__name">Cendre de Soie</div>
+            <div class="product-card__variant">Jedwab szyfon · 45×175 cm</div>
+          </div>
+          <div class="product-card__price">860 PLN</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ PRODUCT MODALS ============ -->
+
+  <!-- MODAL: Azul -->
+  <div class="modal-overlay" id="modal-azul">
+    <div class="modal">
+      <div class="modal__gallery">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85"
+             alt="Azul Profundo">
+      </div>
+      <div class="modal__body">
+        <button class="modal__close" onclick="closeModal('azul')">✕</button>
+        <span class="section__label">Kolekcja Limitowana</span>
+        <h2 class="modal__name">Azul Profundo</h2>
+        <div class="modal__price">890 PLN</div>
+        <p class="modal__desc">
+          Głęboki błękit oceanu uchwycony w jedwabiu. Wzór tworzony
+          przez kilka godzin na powierzchni wody — każdy ruch igły
+          był jednorazowym gestem, którego nie można powtórzyć.
+          Ta chusta jest numerowana i sygnowana przez artystkę.
+        </p>
+        <ul class="modal__specs">
+          <li>
+            <span>Materiał</span>
+            <span>100% jedwab naturalny</span>
+          </li>
+          <li>
+            <span>Wymiary</span>
+            <span>90 × 90 cm</span>
+          </li>
+          <li>
+            <span>Technika</span>
+            <span>Ebru na jedwabiu</span>
+          </li>
+          <li>
+            <span>Edycja</span>
+            <span>1 z 1 — unikalna</span>
+          </li>
+          <li>
+            <span>Certyfikat</span>
+            <span>Dołączony do zamówienia</span>
+          </li>
+        </ul>
+        <button class="btn btn--dark"
+                style="width:100%"
+                onclick="addToCart('Azul Profundo', 890); closeModal('azul')">
+          Dodaj do Koszyka — 890 PLN
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Terra -->
+  <div class="modal-overlay" id="modal-terra">
+    <div class="modal">
+      <div class="modal__gallery">
+        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=85"
+             alt="Terra Rosa">
+      </div>
+      <div class="modal__body">
+        <button class="modal__close" onclick="closeModal('terra')">✕</button>
+        <span class="section__label">Kolekcja Stała</span>
+        <h2 class="modal__name">Terra Rosa</h2>
+        <div class="modal__price">750 PLN</div>
+        <p class="modal__desc">
+          Odcienie spalonej ziemi, starej terakoty i różu o zachodzie słońca.
+          Podłużna forma sprawia, że chusta układa się jak drugi skin —
+          miękko, z gracją. Idealna na każdy sezon.
+        </p>
+        <ul class="modal__specs">
+          <li><span>Materiał</span><span>100% jedwab naturalny</span></li>
+          <li><span>Wymiary</span><span>45 × 175 cm</span></li>
+          <li><span>Technika</span><span>Ebru na jedwabiu</span></li>
+          <li><span>Edycja</span><span>1 z 1 — unikalna</span></li>
+          <li><span>Certyfikat</span><span>Dołączony do zamówienia</span></li>
+        </ul>
+        <button class="btn btn--dark"
+                style="width:100%"
+                onclick="addToCart('Terra Rosa', 750); closeModal('terra')">
+          Dodaj do Koszyka — 750 PLN
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Nuit -->
+  <div class="modal-overlay" id="modal-nuit">
+    <div class="modal">
+      <div class="modal__gallery">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=85"
+             alt="Nuit Indigo">
+      </div>
+      <div class="modal__body">
+        <button class="modal__close" onclick="closeModal('nuit')">✕</button>
+        <span class="section__label">Kolekcja Stała</span>
+        <h2 class="modal__name">Nuit Indigo</h2>
+        <div class="modal__price">1 100 PLN</div>
+        <p class="modal__desc">
+          Noc bez gwiazd, tylko indygo — niegranatowe,
+          prawie czarne. Szyfon sprawia, że każdy ruch
+          roztapia wzór w powietrzu. Elegancja bez wysiłku.
+        </p>
+        <ul class="modal__specs">
+          <li><span>Materiał</span><span>100% jedwab szyfon</span></li>
+          <li><span>Wymiary</span><span>90 × 90 cm</span></li>
+          <li><span>Technika</span><span>Ebru na jedwabiu</span></li>
+          <li><span>Edycja</span><span>1 z 1 — unikalna</span></li>
+          <li><span>Certyfikat</span><span>Dołączony do zamówienia</span></li>
+        </ul>
+        <button class="btn btn--dark"
+                style="width:100%"
+                onclick="addToCart('Nuit Indigo', 1100); closeModal('nuit')">
+          Dodaj do Koszyka — 1 100 PLN
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Ambre -->
+  <div class="modal-overlay" id="modal-ambre">
+    <div class="modal">
+      <div class="modal__gallery">
+        <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=800&q=85"
+             alt="Ambre Doré">
+      </div>
+      <div class="modal__body">
+        <button class="modal__close" onclick="closeModal('ambre')">✕</button>
+        <span class="section__label">Limitowana · Wyprzedaż</span>
+        <h2 class="modal__name">Ambre Doré</h2>
+        <div class="modal__price">
+          <span style="font-size:0.9rem;color:var(--text-muted);
+                       text-decoration:line-through;display:block">
+            1 200 PLN
+          </span>
+          980 PLN
+        </div>
+        <p class="modal__desc">
+          Złoto bursztynu. Ciepłe, żywiczne, otulające.
+          Jeden z ostatnich egzemplarzy kolekcji letniej.
+          Dostępna w cenie specjalnej — tylko do wyczerpania.
+        </p>
+        <ul class="modal__specs">
+          <li><span>Materiał</span><span>100% jedwab naturalny</span></li>
+          <li><span>Wymiary</span><span>45 × 175 cm</span></li>
+          <li><span>Technika</span><span>Ebru na jedwabiu</span></li>
+          <li><span>Edycja</span><span>1 z 1 — unikalna</span></li>
+          <li><span>Certyfikat</span><span>Dołączony do zamówienia</span></li>
+        </ul>
+        <button class="btn btn--dark"
+                style="width:100%"
+                onclick="addToCart('Ambre Doré', 980); closeModal('ambre')">
+          Dodaj do Koszyka — 980 PLN
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Bloom -->
+  <div class="modal-overlay" id="modal-bloom">
+    <div class="modal">
+      <div class="modal__gallery">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=85"
+             alt="First Bloom">
+      </div>
+      <div class="modal__body">
+        <button class="modal__close" onclick="closeModal('bloom')">✕</button>
+        <span class="section__label">Kolekcja Stała</span>
+        <h2 class="modal__name">First Bloom</h2>
+        <div class="modal__price">820 PLN</div>
+        <p class="modal__desc">
+          Pierwsze kwiaty po zimie. Subtelna paleta —
+          pudrowyróż, ecru, delikatna zieleń. Chusta
+          która wygląda inaczej w każdym świetle.
+          Minimalistyczna, a mimo to żywa.
+        </p>
+        <ul class="modal__specs">
+          <li><span>Materiał</span><span>100% jedwab naturalny</span></li>
+          <li><span>Wymiary</span><span>90 × 90 cm</span></li>
+          <li><span>Technika</span><span>Ebru na jedwabiu</span></li>
+          <li><span>Edycja</span><span>1 z 1 — unikalna</span></li>
+          <li><span>Certyfikat</span><span>Dołączony do zamówienia</span></li>
+        </ul>
+        <button class="btn btn--dark"
+                style="width:100%"
+                onclick="addToCart('First Bloom', 820); closeModal('bloom')">
+          Dodaj do Koszyka — 820 PLN
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Cendre -->
+  <div class="modal-overlay" id="modal-cendre">
+    <div class="modal">
+      <div class="modal__gallery">
+        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&q=85"
+             alt="Cendre de Soie">
+      </div>
+      <div class="modal__body">
+        <button class="modal__close" onclick="closeModal('cendre')">✕</button>
+        <span class="section__label">Kolekcja Stała</span>
+        <h2 class="modal__name">Cendre de Soie</h2>
+        <div class="modal__price">860 PLN</div>
+        <p class="modal__desc">
+          Popiel, dym, mgła poranna. Wzór który zdaje się
+          znikać i wracać przy każdym ruchu. Szyfon
+          w odcieniach szarości — dla tych, którzy
+          wiedzą, że prostota jest szczytem luksusu.
+        </p>
+        <ul class="modal__specs">
+          <li><span>Materiał</span><span>100% jedwab szyfon</span></li>
+          <li><span>Wymiary</span><span>45 × 175 cm</span></li>
+          <li><span>Technika</span><span>Ebru na jedwabiu</span></li>
+          <li><span>Edycja</span><span>1 z 1 — unikalna</span></li>
+          <li><span>Certyfikat</span><span>Dołączony do zamówienia</span></li>
+        </ul>
+        <button class="btn btn--dark"
+                style="width:100%"
+                onclick="addToCart('Cendre de Soie', 860); closeModal('cendre')">
+          Dodaj do Koszyka — 860 PLN
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__brand-name">ebru<span>.</span></div>
+        <p>
+          Luksusowe chusty tworzone w technice ebru.
+          Każda jest jedyna. Każda nosi w sobie
+          moment swojego powstania.
+        </p>
+        <div class="footer__socials" style="margin-top:1.5rem">
+          <a href="https://instagram.com" target="_blank"
+             rel="noopener" class="social-icon" aria-label="Instagram">IG</a>
+          <a href="https://facebook.com" target="_blank"
+             rel="noopener" class="social-icon" aria-label="Facebook">FB</a>
+          <a href="https://pinterest.com" target="_blank"
+             rel="noopener" class="social-icon" aria-label="Pinterest">PT</a>
+          <a href="https://tiktok.com" target="_blank"
+             rel="noopener" class="social-icon" aria-label="TikTok">TK</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Nawigacja</h4>
+        <ul>
+          <li><a href="index.html">Strona Główna</a></li>
+          <li><a href="products.html">Kolekcja</a></li>
+          <li><a href="about.html">O Nas</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Informacje</h4>
+        <ul>
+          <li><a href="#">Dostawa i Zwroty</a></li>
+          <li><a href="#">Pielęgnacja Jedwabiu</a></li>
+          <li><a href="#">Certyfikat Autentyczności</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 Ebru Studio. Wszelkie prawa zastrzeżone.</p>
+      <p style="font-style:italic;font-family:var(--font-serif);
+                color:rgba(245,240,232,0.2);font-size:0.85rem">
+        Każda chusta to osobny wszechświat.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>
