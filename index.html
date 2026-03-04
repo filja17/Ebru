@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EBRU — Sztuka w Ruchu</title>
+  <meta name="description" content="Luksusowe chusty tworzone w technice ebru. Każda jest jedyna. Każda żyje.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <!-- PAGE TRANSITION -->
+  <div class="page-transition" id="pageTransition"></div>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav" id="mainNav">
+    <a href="index.html" class="nav__logo">ebru<span>.</span></a>
+
+    <ul class="nav__links">
+      <li><a href="index.html">Główna</a></li>
+      <li><a href="products.html">Kolekcja</a></li>
+      <li><a href="about.html">O Nas</a></li>
+    </ul>
+
+    <div class="nav__cart" id="cartToggle">
+      <span>Koszyk</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </div>
+
+    <!-- Hamburger mobile -->
+    <div class="nav__hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav__mobile" id="mobileMenu">
+    <a href="index.html" onclick="closeMobile()">Główna</a>
+    <a href="products.html" onclick="closeMobile()">Kolekcja</a>
+    <a href="about.html" onclick="closeMobile()">O Nas</a>
+    <a href="#" onclick="closeMobile(); openCart()">Koszyk</a>
+  </div>
+
+  <!-- ============ CART DRAWER ============ -->
+  <div class="cart-overlay" id="cartOverlay">
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-drawer__header">
+        <h3>Twój Koszyk</h3>
+        <button class="cart-close" id="cartClose">✕</button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <div class="cart-empty" id="cartEmpty">
+          <span style="font-size:2rem;opacity:0.3;">◇</span>
+          <p>Twój koszyk jest pusty.<br>Odkryj naszą kolekcję.</p>
+          <a href="products.html" class="btn btn--outline" style="margin-top:1rem">
+            Przeglądaj
+          </a>
+        </div>
+      </div>
+      <div class="cart-drawer__footer" id="cartFooter" style="display:none">
+        <div class="cart-total">
+          <span>Razem</span>
+          <span id="cartTotal">0 PLN</span>
+        </div>
+        <button class="btn btn--dark" style="width:100%;margin-bottom:0.8rem">
+          Przejdź do Kasy
+        </button>
+        <p style="text-align:center;font-size:0.72rem;letter-spacing:0.1em;color:var(--text-muted)">
+          Bezpieczna płatność · Darmowa dostawa od 500 PLN
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero__bg">
+      <img
+        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=90"
+        alt="Ebru art – marbled silk"
+      >
+    </div>
+
+    <div class="hero__orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__eyebrow">Sztuka która żyje</div>
+      <h1 class="hero__title">
+        Każda chusta<br>
+        to <em>osobny</em><br>
+        wszechświat.
+      </h1>
+      <p class="hero__subtitle">
+        Technika ebru — kolor unoszący się na wodzie,
+        zamrożony w jedwabiu. Nie ma dwóch takich samych.
+        Tylko twoja.
+      </p>
+      <div class="hero__cta">
+        <a href="products.html" class="btn btn--solid">
+          Odkryj Kolekcję
+        </a>
+        <a href="about.html" class="btn--hero-outline">
+          Nasza Historia
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <div class="hero__scroll-line"></div>
+      <span>Odkryj</span>
+    </div>
+  </section>
+
+  <!-- ============ MANIFESTO ============ -->
+  <div class="manifesto">
+    <div class="manifesto__text-block" data-reveal>
+      <span class="section__label">Manifest</span>
+      <p class="manifesto__quote">
+        Piękno nie jest w doskonałości.
+        Jest w tym jednym, nieuchwytnym ruchu.
+      </p>
+      <p class="manifesto__body">
+        Ebru to jedna z najstarszych sztuk świata. Artysta zanurzony
+        w ciszy, czubek igły ślizga się po wodzie i tworzy wzory
+        niemożliwe do powtórzenia. Gdy tkanina dotknie powierzchni —
+        moment zostaje zatrzymany na zawsze.
+      </p>
+      <p class="manifesto__body">
+        Każda nasza chusta jest oryginalnym dziełem sztuki.
+        Nosi w sobie ten jeden, konkretny oddech artystki.
+      </p>
+      <a href="about.html" class="btn btn--outline">
+        Poznaj Historię
+      </a>
+    </div>
+
+    <div class="manifesto__visual" data-reveal data-reveal-delay="2">
+      <div class="manifesto__img-frame">
+        <img
+          src="https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=900&q=85"
+          alt="Technika ebru na jedwabiu"
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FEATURED CAROUSEL ============ -->
+  <section class="featured">
+    <div class="featured__header">
+      <div data-reveal>
+        <span class="section__label">Kolekcja</span>
+        <h2>Wybrane Prace</h2>
+      </div>
+      <a href="products.html" class="btn btn--outline" data-reveal data-reveal-delay="2">
+        Zobacz Wszystkie
+      </a>
+    </div>
+
+    <div class="featured__track-wrapper">
+      <div class="featured__track" id="featuredTrack">
+
+        <div class="featured__slide">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Chusta Azul">
+          <div class="featured__slide-overlay">
+            <div class="featured__slide-info">
+              <h4>Azul Profundo</h4>
+              <p>od 890 PLN</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured__slide">
+          <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&q=80" alt="Chusta Terra">
+          <div class="featured__slide-overlay">
+            <div class="featured__slide-info">
+              <h4>Terra Rosa</h4>
+              <p>od 750 PLN</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured__slide">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Chusta Noir">
+          <div class="featured__slide-overlay">
+            <div class="featured__slide-info">
+              <h4>Nuit Indigo</h4>
+              <p>od 1 100 PLN</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured__slide">
+          <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=600&q=80" alt="Chusta Amber">
+          <div class="featured__slide-overlay">
+            <div class="featured__slide-info">
+              <h4>Ambre Doré</h4>
+              <p>od 980 PLN</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured__slide">
+          <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80" alt="Chusta Bloom">
+          <div class="featured__slide-overlay">
+            <div class="featured__slide-info">
+              <h4>First Bloom</h4>
+              <p>od 820 PLN</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHILOSOPHY STRIP ============ -->
+  <section style="background:var(--ink)">
+    <div class="philosophy">
+      <div class="philosophy__item" data-reveal>
+        <span class="philosophy__icon">◇</span>
+        <h3>
